@@ -1,17 +1,11 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-});
+import { ThemeProvider } from "@/components/elements/theme-provider";
+import Navbar from "@/components/elements/Nabar"
+import { Toaster } from "@/components/ui/toaster"
+import { SessionProvider } from "next-auth/react";
+import Footer from "@/components/elements/Footer";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -24,11 +18,26 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
+    <html lang="fa" dir="rtl" className="dark">
+      <body className="font-sans flex flex-col min-h-screen ">
+        <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <SessionProvider>
+            <Navbar/>
+            <div className="container mx-auto border-md shadow-lg border-gray-200
+                          lg:min-h-[760px] 
+                            overflow-hidden rounded-lg p-3  ">
+              {children}
+            </div>
+              <Footer/>
+            <Toaster/>
+            </SessionProvider>
+        </ThemeProvider>
+
       </body>
     </html>
   );
