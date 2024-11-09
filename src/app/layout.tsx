@@ -18,7 +18,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="fa" dir="rtl" className="dark">
+    <html lang="fa" dir="rtl">
       <body className="font-sans flex flex-col min-h-screen ">
         <ThemeProvider
             attribute="class"

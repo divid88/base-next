@@ -19,7 +19,7 @@ export default async function Profile() {
           <div className='flex items-center justify-center'>
           <Label> خروج از حساب کاری </Label>
           &nbsp;
-            <Button className='bg-red-700 text-white'> خروج </Button>
+            <Button className='bg-destructive text-white'> خروج </Button>
             </div>
         </form>
 
